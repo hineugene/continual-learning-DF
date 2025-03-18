@@ -1,0 +1,33 @@
+import pandas as pd
+import numpy as np
+
+data = pd.read_csv("mon_standard_dataset.csv")
+data = data[['Direction_Size_Sequence', 'Label']]
+data['Direction_Only_Sequence'] = data['Direction_Size_Sequence'].apply(lambda x: [1 if i > 0 else -1 for i in eval(x)])
+
+# 라벨이 0~94 사이인 데이터만 필터링
+data = data[data['Label'].between(0, 94)]
+
+# Function to adjust the sequence length to a target length
+def adjust_sequence_length(sequence, target_length=10000, padding_value=-1):
+    if len(sequence) < target_length:
+        # If the sequence is shorter than the target length, pad with the specified value
+        sequence = sequence + [padding_value] * (target_length - len(sequence))
+    else:
+        # If the sequence is longer than the target length, truncate it
+        sequence = sequence[:target_length]
+    return sequence
+
+# Adjust length
+data['Direction_Only_Sequence'] = data['Direction_Only_Sequence'].apply(lambda x: adjust_sequence_length(x))
+
+# convert to NumPy array and add dimension
+sequence_array = np.array(data['Direction_Only_Sequence'].tolist(), dtype=np.float32)
+sequence_array = sequence_array[:, :, np.newaxis]  # (샘플 수, 10000, 1) 형태로 변환
+
+
+data['Direction_Only_Sequence'] = list(sequence_array)
+mon_data = data
+
+with open("mon_data.pkl", "wb") as f:
+    pickle.dump(mon_data, f)

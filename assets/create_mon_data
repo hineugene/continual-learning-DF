@@ -23,7 +23,7 @@ data['Direction_Only_Sequence'] = data['Direction_Only_Sequence'].apply(lambda x
 
 # Convert to NumPy array and add dimension
 sequence_array = np.array(data['Direction_Only_Sequence'].tolist(), dtype=np.float32)
-sequence_array = sequence_array[:, :, np.newaxis]  # (샘플 수, 10000, 1) 형태로 변환
+sequence_array = sequence_array[:, :, np.newaxis]  # (19000, 10000, 1)
 
 
 data['Direction_Only_Sequence'] = list(sequence_array)

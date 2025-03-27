@@ -11,10 +11,7 @@
 | (4) 팀 지도교수 | 오세은 교수님 |
 | (5) 과제 분류 | *연구 과제* |
 | (6) 과제 키워드 | *Deep Fingerprinting, Continual Learning, Network Security*  |
-| (7) 과제 내용 요약 | *웹사이트 핑거프린팅(Website Fingerprinting, WF) 공격은 Tor 네트워크 사용자의 프라이버시를 위협하는 주요 보안 문제 중 하나이다. 최근 딥러닝 기반의 Deep Fingerprinting(DF) 모델이 등장하며 WF 공격의 정확도가 크게 향상되었으나, 기존 DF 모델은 정적인 데이터셋을 사용하여 학습하기 때문에 시간이 지남에 따라 변화하는 트래픽 패턴을 반영하지 못하는 한계가 있다. 이에 따라, 본 연구에서는 Continual Learning(CL) 기법 중 하나인 Elastic Weight Consolidation (EWC)을 적용하여 DF 모델이 새로운 데이터를 학습하면서도 기존 정보를 효과적으로 유지할 수 있도록 설계하였다.
-<br>
-본 연구에서는 Closed-world 및 Open-world 환경에서 EWC 기반 DF 모델의 성능을 평가하고 EWC 적용 여부에 따른 성능 차이를 분석하였으며, 실험 결과 제안된 CL 기반 DF 모델은 기존 모델 대비 시간에 따른 성능 저하가 적다는 점을 확인하였다. 본 연구는 Continual Learning을 적용하여 WF 공격 모델의 실환경 적응성을 높이고, EWC 기반 학습 전략이 DF 모델의 성능 유지에 효과적임을 실험적으로 검증했다는 점에서 의미가 있다.
-* |
+| (7) 과제 내용 요약 | *웹사이트 핑거프린팅(Website Fingerprinting, WF) 공격은 Tor 네트워크 사용자의 프라이버시를 위협하는 주요 보안 문제 중 하나이다. 최근 딥러닝 기반의 Deep Fingerprinting(DF) 모델이 등장하며 WF 공격의 정확도가 크게 향상되었으나, 기존 DF 모델은 정적인 데이터셋을 사용하여 학습하기 때문에 시간이 지남에 따라 변화하는 트래픽 패턴을 반영하지 못하는 한계가 있다. 이에 따라, 본 연구에서는 Continual Learning(CL) 기법 중 하나인 Elastic Weight Consolidation (EWC)을 적용하여 DF 모델이 새로운 데이터를 학습하면서도 기존 정보를 효과적으로 유지할 수 있도록 설계하였다.<br>본 연구에서는 Closed-world 및 Open-world 환경에서 EWC 기반 DF 모델의 성능을 평가하고 EWC 적용 여부에 따른 성능 차이를 분석하였으며, 실험 결과 제안된 CL 기반 DF 모델은 기존 모델 대비 시간에 따른 성능 저하가 적다는 점을 확인하였다. 본 연구는 Continual Learning을 적용하여 WF 공격 모델의 실환경 적응성을 높이고, EWC 기반 학습 전략이 DF 모델의 성능 유지에 효과적임을 실험적으로 검증했다는 점에서 의미가 있다.* |
 
 <br>
 

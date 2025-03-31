@@ -33,8 +33,7 @@
 | (2) 전체 시스템 구성 | 전체 시스템은 다음과 같은 구성으로 이루어진다: <br> - **기본 DF 모델 모듈**: 1D-CNN 기반 네트워크 트래픽 분류 모델 학습 <br> - **EWC 적용 모듈**: 중요 가중치 계산 및 가중치 손실 함수 반영 <br> - **실험 제어 모듈**: 환경 설정 및 시나리오 기반 평가 수행 <br> - 외부 모듈: Tensorflow 등 오픈소스 도구 활용 |
 | (3) 주요엔진 및 기능 설계 |① DF 모델 모듈<br>- 1D-CNN 아키텍처: Conv1D → ReLU → MaxPooling → Dropout → Fully Connected Layer → Softmax<br>- 학습 대상: 패킷 방향 시퀀스<br><br>② EWC 통합 모듈<br>- 기존 Task 학습 완료 후 파라미터의 Fisher Information Matrix(FIM) 계산<br>- 다음 Task 학습 시, 손실 함수에 EWC 정규화 항 추가<br>- 수식: L_total = L_task + λ∑(F_i * (θ_i - θ*_i)^2)<br>- 향후 개선 방향: 중요도가 낮은 파라미터에 마스킹 기법 적용 예정<br><br>
 ③ 실험 시나리오 모듈<br>- Task 단위 학습 흐름 정의 (Closed-world: 동일 사이트 Task 분할 / Open-world: 새로운 사이트 등장)<br>- 각 Task별 학습 및 평가 자동 실행, 결과 로그 기록<br><br> |
-| (4) 주요 기능의 구현 |① EWC 적용 학습 파이프라인 구현<br>- 기존 모델의 학습 종료 후 각 파라미터에 대해 FIM 계산<br>
-- 새 Task 학습 시 기존 가중치와의 차이를 페널티로 반영하여 성능 하락 방지<br>- λ 값 및 기타 하이퍼파라미터 실험을 통한 최적값 탐색<br><br>② 실험 자동화 및 제어 스크립트<br>-Python 기반 스크립트로 Task별 학습/평가 루프 구성<br>- 실험 시나리오(Class-IL, Domain-IL)를 config 파일로 설정 가능<br><br>③ 성능 분석 도구<br>- Accuracy 지표 계산<br>- matplotlib 기반 시각화: incremental task별 accuracy 변화 꺾은선 그래프, hyperparameter 조합 별 accuracy 비교 막대 그래프 출력<br><br> |
+| (4) 주요 기능의 구현 |① EWC 적용 학습 파이프라인 구현<br>- 기존 모델의 학습 종료 후 각 파라미터에 대해 FIM 계산<br>- 새 Task 학습 시 기존 가중치와의 차이를 페널티로 반영하여 성능 하락 방지<br>- λ 값 및 기타 하이퍼파라미터 실험을 통한 최적값 탐색<br><br>② 실험 자동화 및 제어 스크립트<br>-Python 기반 스크립트로 Task별 학습/평가 루프 구성<br>- 실험 시나리오(Class-IL, Domain-IL)를 config 파일로 설정 가능<br><br>③ 성능 분석 도구<br>- Accuracy 지표 계산<br>- matplotlib 기반 시각화: incremental task별 accuracy 변화 꺾은선 그래프, hyperparameter 조합 별 accuracy 비교 막대 그래프 출력<br><br> |
 | (5) 기타 |- 본 프로젝트는 GPU 환경에서 수행되며, Python 3.7.7 및 Tensorflow 2.10.0을 기반으로 구현됨<br>- 결과 수치는 중간발표 발표 자료에 반영 예정 <br> |
 
 <br>
